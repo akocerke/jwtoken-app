@@ -17,3 +17,7 @@ code {
 .custom-card-size {
   min-height: 150px;   
 }
+
+.nav-link-hover:hover {
+  color: white;
+}
