@@ -27,9 +27,9 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link className="text-success nav-link-hover" href="/login">Login</Nav.Link>
-            <Nav.Link className="text-warning nav-link-hover" href="/signup">Registrieren</Nav.Link>
-            <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+            <Nav.Link className="text-success" href="/login">Login</Nav.Link>
+            <Nav.Link className="text-warning" href="/signup">Registrieren</Nav.Link>
+            <Nav.Link className="text-danger" onClick={handleLogout}>Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
