@@ -14,7 +14,7 @@ const Signup = () => {
     try {
       const data = await registerUser(email, password);
       console.log("Registrierung erfolgreich:", data);
-      setSuccessMessage("Registrierung erfolgreich!");
+      setSuccessMessage("Registrierung erfolgreich! Du kannst dich jetzt einloggen.");
       setError(null);
       // Optional: Umleiten des Benutzers oder weitere Schritte
     } catch (error) {

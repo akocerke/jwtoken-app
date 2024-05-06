@@ -8,7 +8,7 @@ const Header = () => {
       <Container>
         <Row className="justify-content-center">
           <Col md={6} className="text-center">
-            <h1> <i className="bi bi-shield-lock"></i> JWToken-APP  <i className="bi bi-shield-lock"></i></h1>
+            <h1> <i className="bi bi-shield-lock"></i> SkillShare Plattform-APP  <i className="bi bi-shield-lock"></i></h1>
           </Col>
         </Row>
       </Container>

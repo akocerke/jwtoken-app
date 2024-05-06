@@ -23,7 +23,7 @@ const NavBar = () => {
   return (
     <Navbar bg="black" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand href="/">JWToken-APP</Navbar.Brand>
+        <Navbar.Brand href="/">SkillShare Plattform-APP</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
