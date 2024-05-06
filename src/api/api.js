@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const API_URL = 'http://localhost:3030/jwtoken/auth'; // Passen Sie die URL Ihrer API an
-
+const API_URL_u = 'http://localhost:3030/jwtoken/users';
 // Login
 export const loginUser = async (email, password) => {
     try {
@@ -44,3 +44,18 @@ export const logoutUser = async (token) => {
         throw error.response ? error.response.data : "Error during logout";
     }
 };
+
+// Profilabfrage
+export const fetchUserProfile = async (token) => {
+    try {
+        const response = await axios.get(`${API_URL_u}/currentuser`, {
+            headers: {
+                'Authorization': `Bearer ${token}`  // Authentifizierung mit Bearer Token
+            }
+        });
+        return response.data; // Gibt Benutzerprofilinformationen zurück
+    } catch (error) {
+        throw error.response.data; // Wirft eine Fehlermeldung zurück
+    }
+};
+

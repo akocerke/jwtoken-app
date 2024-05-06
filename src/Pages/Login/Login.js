@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
 import Content from "../../Components/Content/Content";
 import { loginUser } from '../../api/api';
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
+  const navigate = useNavigate(); 
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -17,6 +19,7 @@ const Login = () => {
       localStorage.setItem('token', data.token);
       setSuccessMessage("Login erfolgreich!");
       setError(null);
+      navigate('/profile');
     } catch (error) {
       let errorMsg = "Anmeldefehler"; // Standardfehlermeldung
       if (error.response && error.response.data && error.response.data.message) {
