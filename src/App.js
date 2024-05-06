@@ -6,6 +6,7 @@ import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Signup/Signup";
 import Profile from "./Pages/Profile/Profile";
+import ProfileUpdate from "./Pages/Profile/Profile-Update";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/profile-update" element={<ProfileUpdate />} />
         </Routes>
       </>
     </Router>
