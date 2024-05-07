@@ -6,7 +6,7 @@ import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Signup/Signup";
 import Profile from "./Pages/Profile/Profile";
-import ProfileUpdate from "./Pages/Profile/Profile-Update";
+import ProfileUpdate from "./Pages/Profile/ProfilUpdate";
 
 
 function App() {
