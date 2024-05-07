@@ -59,6 +59,7 @@ export const fetchUserProfile = async (token) => {
     }
 };
 
+
 // GET UserProfile
 export const getUserProfile = async (token) => {
     try {
@@ -67,9 +68,15 @@ export const getUserProfile = async (token) => {
                 'Authorization': `Bearer ${token}`  // Authentifizierung mit Bearer Token
             }
         });
-        return response.data; // Gibt die Profildaten des Benutzers zurück
+        // Überprüfe, ob die Daten komplett leer sind und gebe ggf. null zurück
+        const isEmpty = Object.values(response.data).every(x => x === null || x === '');
+        return isEmpty ? null : response.data;
     } catch (error) {
-        throw error.response.data; // Wirft eine Fehlermeldung zurück, wenn der Aufruf fehlschlägt
+        if (error.response && error.response.status === 404) {
+            return null;
+        } else {
+            throw error.response.data;
+        }
     }
 };
 

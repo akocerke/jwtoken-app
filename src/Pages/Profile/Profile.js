@@ -5,8 +5,8 @@ import { fetchUserProfile, getUserProfile } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
-  const [basicInfo, setBasicInfo] = useState(null);
-  const [profileInfo, setProfileInfo] = useState(null);
+  const [basicInfo, setBasicInfo] = useState({});
+  const [profileInfo, setProfileInfo] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -18,8 +18,9 @@ const Profile = () => {
 
     Promise.all([loadBasicInfo, loadProfileInfo])
       .then(([basicData, profileData]) => {
-        setBasicInfo(basicData);
-        setProfileInfo(profileData);
+        // Setze die Daten, unabhängig davon, ob sie leer oder vollständig sind
+        setBasicInfo(basicData || {});
+        setProfileInfo(profileData || {});
         setLoading(false);
       })
       .catch((err) => {
@@ -38,28 +39,21 @@ const Profile = () => {
           <Col md={6} className="mb-4">
             <Card className="h-100 shadow-sm">
               <Card.Header className="bg-black text-white">
-                {profileInfo?.first_name} {profileInfo?.last_name}
+                {profileInfo?.first_name || 'Kein Vorname'} {profileInfo?.last_name || 'Kein Nachname'}
               </Card.Header>
               <Card.Body className="bg-dark text-white text-center">
-                
-                  <Image
-                    src={
-                      basicInfo?.profile_image_path ||
-                      "https://via.placeholder.com/150"
-                    }
-                    roundedCircle
-                    className="img-fluid mb-4"
-                  />
-                
+                <Image
+                  src={basicInfo?.profile_image_path || "https://via.placeholder.com/150"}
+                  roundedCircle
+                  className="img-fluid mb-4"
+                />
                 <hr />
                 <Card.Text className="mb-1">
-                  Email: {basicInfo?.email}
+                  Email: {basicInfo?.email || 'Keine E-Mail'}
                 </Card.Text>
                 <Card.Text className="mb-1">
-                  Ort: {profileInfo?.postal_code} {profileInfo?.city}
+                  Ort: {profileInfo?.postal_code || 'Keine PLZ'} {profileInfo?.city || 'Keine Stadt'}
                 </Card.Text>
-                
-                <div className="text-center">
                 <Button
                   className="mt-4 mb-3 text-danger-emphasis"
                   variant="warning"
@@ -67,7 +61,6 @@ const Profile = () => {
                 >
                   Profil bearbeiten
                 </Button>
-                </div>
               </Card.Body>
             </Card>
           </Col>

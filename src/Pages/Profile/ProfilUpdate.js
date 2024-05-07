@@ -33,7 +33,7 @@ const ProfileUpdateForm = () => {
             postalCode: data.postal_code || "",
           });
         } else {
-          throw new Error("Keine Daten erhalten");
+          throw new Error("Keine Daten erhalten. Hier kannst du deine Profildaten bearbeiten");
         }
       } catch (error) {
         setErrorMessage("Fehler beim Laden der Profildaten: " + error.message);
