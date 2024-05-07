@@ -1,31 +1,31 @@
-// Profile.js
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Image, Button } from "react-bootstrap";
 import Content from "../../Components/Content/Content";
-import { fetchUserProfile } from '../../api/api';
+import { fetchUserProfile, getUserProfile } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 
-
 const Profile = () => {
-  const [user, setUser] = useState(null);
+  const [basicInfo, setBasicInfo] = useState(null);
+  const [profileInfo, setProfileInfo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); // Dies ersetzt useHistory
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const loadData = async () => {
-        try {
-            const userToken = localStorage.getItem('token');
-            const userData = await fetchUserProfile(userToken);
-            setUser(userData);
-            setLoading(false);
-        } catch (error) {
-            setError(error.message || 'Fehler beim Laden des Profils');
-            setLoading(false);
-        }
-    };
+    const userToken = localStorage.getItem("token");
+    const loadBasicInfo = fetchUserProfile(userToken);
+    const loadProfileInfo = getUserProfile(userToken);
 
-    loadData();
+    Promise.all([loadBasicInfo, loadProfileInfo])
+      .then(([basicData, profileData]) => {
+        setBasicInfo(basicData);
+        setProfileInfo(profileData);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message || "Fehler beim Laden des Profils");
+        setLoading(false);
+      });
   }, []);
 
   if (loading) return <p>Lädt...</p>;
@@ -33,30 +33,58 @@ const Profile = () => {
 
   return (
     <Content>
-      <Container fluid>
+      <Container fluid className="col-8">
         <Row>
-          <Col md={4} className="mb-4">
+          <Col md={6} className="mb-4">
             <Card className="h-100 shadow-sm">
-              <Card.Body className="bg-dark text-white">
-                <Image src={user?.profile_image_path || "https://via.placeholder.com/150"} roundedCircle className="img-fluid" />
-                <Card.Title className="mt-3">{user?.first_name} {user?.last_name}</Card.Title>
-                <Card.Text className="mb-0">
-                  Email: {user?.email}
+              <Card.Header className="bg-black text-white">
+                {profileInfo?.first_name} {profileInfo?.last_name}
+              </Card.Header>
+              <Card.Body className="bg-dark text-white text-center">
+                
+                  <Image
+                    src={
+                      basicInfo?.profile_image_path ||
+                      "https://via.placeholder.com/150"
+                    }
+                    roundedCircle
+                    className="img-fluid mb-4"
+                  />
+                
+                <hr />
+                <Card.Text className="mb-1">
+                  Email: {basicInfo?.email}
                 </Card.Text>
+                <Card.Text className="mb-1">
+                  Ort: {profileInfo?.postal_code} {profileInfo?.city}
+                </Card.Text>
+                
+                <div className="text-center">
+                <Button
+                  className="mt-4 mb-3 text-danger-emphasis"
+                  variant="warning"
+                  onClick={() => navigate("/profile-update")}
+                >
+                  Profil bearbeiten
+                </Button>
+                </div>
               </Card.Body>
             </Card>
           </Col>
-          <Col md={8} className="mb-4">
+
+          <Col md={6} className="mb-4">
             <Card className="h-100 shadow-sm">
-              <Card.Header className="bg-black text-white">Details</Card.Header>
+              <Card.Header className="bg-black text-white">Skills</Card.Header>
               <Card.Body className="bg-dark text-white">
-                <Card.Title>Über mich</Card.Title>
-                <Card.Text>{user?.bio || "Keine Bio verfügbar."}</Card.Text>
-                <Card.Title>Skills</Card.Title>
-                <Card.Text>
-                  {user?.skills && user.skills.length > 0 ? user.skills.map((skill, index) => <div key={index}>- {skill.name} ({skill.proficiency_level})<br /></div>) : "Keine Skills verfügbar."}
-                </Card.Text>
-                <Button variant="primary" onClick={() => navigate('/profile-update')}>Profil bearbeiten</Button>
+                {profileInfo?.skills && profileInfo.skills.length > 0 ? (
+                  profileInfo.skills.map((skill, index) => (
+                    <div key={index}>
+                      {skill.name} ({skill.proficiency_level})<br />
+                    </div>
+                  ))
+                ) : (
+                  <p>Keine Skills verfügbar.</p>
+                )}
               </Card.Body>
             </Card>
           </Col>

@@ -45,7 +45,7 @@ export const logoutUser = async (token) => {
     }
 };
 
-// Profilabfrage
+// GET currentUser
 export const fetchUserProfile = async (token) => {
     try {
         const response = await axios.get(`${API_URL_u}/currentuser`, {
@@ -54,6 +54,34 @@ export const fetchUserProfile = async (token) => {
             }
         });
         return response.data; // Gibt Benutzerprofilinformationen zurück
+    } catch (error) {
+        throw error.response.data; // Wirft eine Fehlermeldung zurück
+    }
+};
+
+// GET UserProfile
+export const getUserProfile = async (token) => {
+    try {
+        const response = await axios.get(`${API_URL_u}/profile`, {
+            headers: {
+                'Authorization': `Bearer ${token}`  // Authentifizierung mit Bearer Token
+            }
+        });
+        return response.data; // Gibt die Profildaten des Benutzers zurück
+    } catch (error) {
+        throw error.response.data; // Wirft eine Fehlermeldung zurück, wenn der Aufruf fehlschlägt
+    }
+};
+
+// PUT Aktualisiert Benutzerdaten
+export const updateUserProfile = async (token, userData) => {
+    try {
+        const response = await axios.put(`${API_URL_u}/updateprofile`, userData, {
+            headers: {
+                'Authorization': `Bearer ${token}`  // Authentifizierung mit Bearer Token
+            }
+        });
+        return response.data; // Gibt die aktualisierten Benutzerdaten zurück
     } catch (error) {
         throw error.response.data; // Wirft eine Fehlermeldung zurück
     }
