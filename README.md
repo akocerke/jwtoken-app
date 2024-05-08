@@ -10,7 +10,8 @@ Entwickle, teile und bestätige deine Fähigkeiten in unserer umfassenden Skill-
 
 ### Zertifizierungen
 
-- **Erhalte Bestätigungen**: Unsere Plattform ermöglicht es dir, projektbezogene Bestätigungen zu erwerben, die deine aktive Teilnahme und die erworbenen Fähigkeiten reflektieren. Diese können in deinem persönlichen Portfolio oder Lebenslauf als Nachweis deines Engagements und deiner Lernerfolge dienen.
+- **Erhalte Punktzahlen**: Auf unserer Plattform kannst du durch das Absolvieren von Quizzes Punktzahlen sammeln, die deine Fortschritte und Fähigkeiten widerspiegeln. Diese Punktzahlen können als quantitativer Beleg deiner Lernbemühungen und als Indikator für dein Wissen in bestimmten Bereichen dienen. Nutze sie, um deine Entwicklungen zu verfolgen und zu dokumentieren.
+
 
 ### Skill-Entwicklung
 
