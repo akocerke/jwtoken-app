@@ -33,3 +33,5 @@ Die SkillShare Plattform und alle Inhalte sind urheberrechtlich geschützt. Bitt
 ---
 
 Viel Erfolg auf deiner Lernreise bei der SkillShare Plattform!
+
+
