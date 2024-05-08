@@ -94,3 +94,22 @@ export const updateUserProfile = async (token, userData) => {
     }
 };
 
+// PUT - Aktualisiert das Profilbild des Benutzers
+export const updateUserProfileImage = async (token, file) => {
+    const formData = new FormData();
+    formData.append('profile_image', file); // Der Name 'profile_image' muss exakt dem im Backend erwarteten Feldnamen entsprechen
+    
+    try {
+        const response = await axios.put(`${API_URL_u}/profile/upload`, formData, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                // 'Content-Type': NICHT setzen, da Axios das selbst handhabt
+            }
+        });
+        return response.data;
+        
+    } catch (error) {
+        console.error("Fehler beim Hochladen des Profilbilds:", error);
+        throw error;
+    }
+};

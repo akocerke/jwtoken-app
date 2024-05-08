@@ -7,6 +7,7 @@ import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Signup/Signup";
 import Profile from "./Pages/Profile/Profile";
 import ProfileUpdate from "./Pages/Profile/ProfilUpdate";
+import ProfilemanageUpload from "./Pages/Profile/ProfilemanageUpload";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile-update" element={<ProfileUpdate />} />
+          <Route path="/profile/upload" element={<ProfilemanageUpload/>}/>
         </Routes>
       </>
     </Router>
