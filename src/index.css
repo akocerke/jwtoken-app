@@ -21,3 +21,33 @@ code {
 .nav-link-hover:hover {
   color: white;
 }
+
+/* Stil für alle Scrollbars */
+::-webkit-scrollbar {
+  width: 10px; /* Breite der vertikalen Scrollbar */
+  height: 10px; /* Höhe der horizontalen Scrollbar */
+}
+
+/* Stil für das Scrollbar-Track (Teil, in dem sich der Thumb bewegt) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Hintergrundfarbe des Tracks */
+  border-radius: 10px; /* Runde Ecken für den Track */
+}
+
+/* Stil für den Scrollbar-Thumb (der bewegliche Teil des Scrollbars) */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Hintergrundfarbe des Thumbs */
+  border-radius: 10px; /* Runde Ecken für den Thumb */
+}
+
+/* Stil für den Scrollbar-Thumb beim Hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Hintergrundfarbe des Thumbs beim Hover */
+}
+
+.custom-image-size {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
