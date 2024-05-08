@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import Content from "../../Components/Content/Content";
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const Home = () => {
   return (
@@ -11,7 +11,8 @@ const Home = () => {
           <Col md={8} className="text-center">
             <h1>Willkommen bei SkillShare Plattform</h1>
             <p>
-              Entwickle, teile und zertifiziere deine Fähigkeiten in unserer umfassenden Skill-Community.
+              Entwickle, teile und zertifiziere deine Fähigkeiten in unserer
+              umfassenden Skill-Community.
             </p>
           </Col>
         </Row>
@@ -19,9 +20,14 @@ const Home = () => {
           <Col md={4} className="text-center">
             <Card className="bg-dark text-light border border-success custom-card-size">
               <Card.Body>
-                <Card.Title><i className="bi bi-person-bounding-box"></i> Mein Profil</Card.Title>
+                <Card.Title>
+                  <i className="bi bi-person-bounding-box"></i> Mein Profil
+                </Card.Title>
                 <Card.Text className="mt-4">
-                  Erstelle und verwalte dein persönliches Profil, lade Zertifikate hoch und präsentiere deine Skills.
+                  Erstelle und verwalte dein persönliches Profil, um deine
+                  Fortschritte und Fähigkeiten zu dokumentieren. Nutze dein
+                  Profil, um dein Lernengagement zu zeigen und deine Entwicklung
+                  im Laufe der Zeit zu verfolgen.
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -29,9 +35,14 @@ const Home = () => {
           <Col md={4} className="text-center">
             <Card className="bg-dark text-light border border-success custom-card-size">
               <Card.Body>
-                <Card.Title><i className="bi bi-trophy-fill"></i> Zertifizierungen</Card.Title>
+                <Card.Title>
+                  <i className="bi bi-trophy-fill"></i> Bestätigungen
+                </Card.Title>
                 <Card.Text className="mt-4">
-                  Erhalte Zertifikate, die deine Fähigkeiten bestätigen und steigere deine Berufschancen.
+                  Erhalte Bestätigungen für erfolgreich abgeschlossene Quizzes,
+                  die deine Fähigkeiten und dein Engagement belegen. Diese
+                  können als Nachweis deiner kontinuierlichen Lernbemühungen
+                  dienen und dein Profil stärken.
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -39,9 +50,14 @@ const Home = () => {
           <Col md={4} className="text-center">
             <Card className="bg-dark text-light border border-success custom-card-size">
               <Card.Body>
-                <Card.Title><i className="bi bi-graph-up"></i> Skill-Entwicklung</Card.Title>
+                <Card.Title>
+                  <i className="bi bi-graph-up"></i> Skill-Entwicklung
+                </Card.Title>
                 <Card.Text className="mt-4">
-                  Nutze unsere Ressourcen, um neue Fähigkeiten zu erlernen und bestehende zu verbessern.
+                  Erweitere dein Wissen und verbessere deine Fähigkeiten durch
+                  unsere interaktiven Übungsquizzes. 
+                  Nutze diese Tools, um deine berufliche und persönliche
+                  Entwicklung gezielt zu fördern.
                 </Card.Text>
               </Card.Body>
             </Card>
