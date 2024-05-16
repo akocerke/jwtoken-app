@@ -72,25 +72,6 @@ const Profile = () => {
               </Card.Body>
             </Card>
           </Col>
-          <Col md={6} className="mb-4">
-            <Card className="h-100 shadow-sm">
-              <Card.Header className="bg-black text-white">
-                Skills
-              </Card.Header>
-              <Card.Body className="bg-dark text-white text-center">
-                kommt noch
-                
-                <hr />
-                <Card.Text>
-                  kommt noch
-                </Card.Text>
-                <Card.Text>
-                kommt noch
-                </Card.Text>
-                
-              </Card.Body>
-            </Card>
-          </Col>
         </Row>
       </Container>
     </Content>
