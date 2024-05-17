@@ -11,9 +11,9 @@ const NavBar = () => {
     if (token) {
       try {
         const response = await logoutUser(token);
-        console.log("Logout erfolgreich:", response.message); // Weiterhin Ausgabe im Konsolenlog
-        localStorage.removeItem('token'); // Token aus dem lokalen Speicher entfernen
-        navigate('/'); // Navigieren zur Startseite oder einem anderen Pfad nach dem Logout
+        console.log("Logout erfolgreich:", response.message);
+        localStorage.removeItem('token');
+        navigate('/');
       } catch (error) {
         console.error("Fehler beim Logout:", error);
       }
@@ -26,11 +26,17 @@ const NavBar = () => {
         <Navbar.Brand href="/">SkillShare Plattform-APP</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
+          
+          <Nav className="mx-auto">
+            <Nav.Link className="text-info" href="/dashboard">Dashboard</Nav.Link>
+            <Nav.Link className="text-info" href="/profile">Profil</Nav.Link>
+          </Nav>
           <Nav className="ms-auto">
             <Nav.Link className="text-success" href="/login">Login</Nav.Link>
             <Nav.Link className="text-warning" href="/signup">Registrieren</Nav.Link>
             <Nav.Link className="text-danger" onClick={handleLogout}>Logout</Nav.Link>
           </Nav>
+          
         </Navbar.Collapse>
       </Container>
     </Navbar>
