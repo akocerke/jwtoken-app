@@ -113,3 +113,25 @@ export const updateUserProfileImage = async (token, file) => {
         throw error;
     }
 };
+
+// GET zum Abrufen der Skills eines Benutzers
+export const getUserSkills = async (userId) => {
+    try {
+      const response = await axios.get(`${API_URL}/skills/byUserId/${userId}`);
+      return response.data;
+    } catch (error) {
+      console.error('Fehler beim Abrufen der Benutzerfähigkeiten:', error);
+      throw error;
+    }
+  };
+  
+  // GET zum Abrufen der Quizzes eines Benutzers
+  export const getUserQuizzes = async (userId) => {
+    try {
+      const response = await axios.get(`${API_URL}/quizzes/byUserId/${userId}`);
+      return response.data;
+    } catch (error) {
+      console.error('Fehler beim Abrufen der Benutzerquizzes:', error);
+      throw error;
+    }
+  };
