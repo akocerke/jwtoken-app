@@ -67,7 +67,7 @@ const ProfileUpdateForm = () => {
     }
   };
   const handleBack = () => {
-    navigate("/profile"); // Führt die Navigation zur Profilseite durch
+    navigate("/settings");
   };
   return (
     <Content>
@@ -146,7 +146,7 @@ const ProfileUpdateForm = () => {
             </Col>
             <Col xs={6} className="mt-4">
               <Button variant="secondary" onClick={handleBack} className="float-end">
-                Zurück
+                Zurück zu Einstellungen
               </Button>
             </Col>
           </Row>

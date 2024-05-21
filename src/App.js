@@ -9,6 +9,7 @@ import Profile from "./Pages/Profile/Profile";
 import ProfileUpdate from "./Pages/Profile/ProfilUpdate";
 import ProfilemanageUpload from "./Pages/Profile/ProfilemanageUpload";
 import Dashboard from "./Pages/Daschboard/Dashboard";
+import Settings from "./Pages/Daschboard/Settings";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/profile-update" element={<ProfileUpdate />} />
           <Route path="/profile/upload" element={<ProfilemanageUpload/>}/>
           <Route path="/dashboard" element={<Dashboard/>}/>
+          <Route path="/settings" element={<Settings/>} />
         </Routes>
       </>
     </Router>

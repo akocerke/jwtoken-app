@@ -82,7 +82,7 @@ const ProfilemanageUpload = () => {
   };
 
   const handleBack = () => {
-    navigate("/profile"); // Führt die Navigation zur Profilseite durch
+    navigate("/settings"); // Führt die Navigation zur Profilseite durch
   };
 
   return (
@@ -132,7 +132,7 @@ const ProfilemanageUpload = () => {
               </div>
             )}
             <Button className="btn btn-secondary mb-4" onClick={handleBack}>
-            Zurück zum Profil
+            Zurück zu Einstellungen
           </Button>
           </Col>
           
