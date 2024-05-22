@@ -19,7 +19,8 @@ const Login = () => {
       localStorage.setItem('token', data.token);
       setSuccessMessage("Login erfolgreich!");
       setError(null);
-      navigate('/profile');
+      navigate('/dashboard');
+      window.location.reload();
     } catch (error) {
       let errorMsg = "Anmeldefehler"; // Standardfehlermeldung
       if (error.response && error.response.data && error.response.data.message) {
