@@ -126,7 +126,7 @@ const ProfilemanageUpload = () => {
                   onClick={handleSaveImage}
                   disabled={isUploading}
                   >
-                  Bild speichern
+                  <i class="bi bi-arrow-repeat"></i> Bild speichern
                 </Button>
                 </div>
               </div>

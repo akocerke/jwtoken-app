@@ -84,7 +84,7 @@ const Dashboard = () => {
               </Card.Header>
               <Card.Body className="bg-dark text-white">
                 {userSkills.length === 0 ? (
-                  <p>Du hast noch keine Skills 😮</p>
+                  <p className="text-center">Du hast noch keine Skills 😮</p>
                 ) : (
                   userSkills.map((userSkill, index) => (
                     <div key={index}>

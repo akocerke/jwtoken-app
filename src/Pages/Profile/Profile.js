@@ -56,7 +56,7 @@ const Profile = () => {
                 />
                 <Col>
                   <Button onClick={handleUploadClick} variant="info" className="mt-4 mb-3 text-danger-emphasis">
-                    Profilbild bearbeiten
+                  <i className="bi bi-gear-fill"></i> Profilbild bearbeiten
                   </Button>
                 </Col>
                 <hr />
@@ -67,7 +67,7 @@ const Profile = () => {
                   Ort: {profileInfo?.postal_code || "Keine PLZ"} {profileInfo?.city || "Keine Stadt"}
                 </Card.Text>
                 <Button onClick={() => navigate("/profile-update")} variant="warning" className="mt-4 mb-3 text-danger-emphasis">
-                  Profil bearbeiten
+                <i className="bi bi-gear-fill"></i> Profil bearbeiten
                 </Button>
               </Card.Body>
             </Card>

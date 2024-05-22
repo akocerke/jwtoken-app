@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Card, Image, Alert } from "react-bootstrap";
+import { Container, Row, Col, Card, Image, Alert} from "react-bootstrap";
 import Content from "../../Components/Content/Content";
 import { getUserProfile, fetchUserProfile } from "../../api/api";
 import { useNavigate } from "react-router-dom";
@@ -19,10 +19,15 @@ const ProfileShow = () => {
 
         setUserProfile(userData);
 
-        const imagePath = basicData.profile_image_path.startsWith('http')
-          ? basicData.profile_image_path
-          : `http://localhost:3030${basicData.profile_image_path}`;
-        setProfileImagePath(imagePath);
+        if (basicData && basicData.profile_image_path) {
+          let imagePath;
+          if (basicData.profile_image_path.startsWith("http")) {
+            imagePath = basicData.profile_image_path;
+          } else {
+            imagePath = `http://localhost:3030${basicData.profile_image_path}`;
+          }
+          setProfileImagePath(imagePath);
+        }
 
         setLoading(false);
       } catch (error) {
@@ -32,13 +37,11 @@ const ProfileShow = () => {
 
     fetchProfile();
   }, [navigate]);
+  
+
 
   if (loading) {
     return <div>Laden...</div>;
-  }
-
-  if (!userProfile) {
-    return <Alert variant="danger">Benutzerprofil nicht gefunden.</Alert>;
   }
 
   return (
@@ -48,15 +51,25 @@ const ProfileShow = () => {
           <Col md={6}>
             <Card>
               <Card.Body className="bg-dark text-white text-center">
-                <Image
-                  src={profileImagePath}
-                  alt="Profilbild"
-                  className="img-fluid mb-4 mt-4 custom-image-size border border-info-subtle"
-                />
-                <h1>{`${userProfile.first_name} ${userProfile.last_name}`}</h1>
-                <p>{`Straße: ${userProfile.street_name} ${userProfile.street_number}`}</p>
-                <p>{`Stadt: ${userProfile.city}, PLZ: ${userProfile.postal_code}`}</p>
-                {/* Weitere Informationen zum Benutzerprofil anzeigen */}
+                {profileImagePath && (
+                  <Image
+                    src={profileImagePath}
+                    alt="Profilbild"
+                    className="img-fluid mb-4 mt-4 custom-image-size border border-info-subtle"
+                  />
+                )}
+                {userProfile ? (
+                  <>
+                    <h1>{`${userProfile.first_name} ${userProfile.last_name}`}</h1>
+                    <p>{`Straße: ${userProfile.street_name} ${userProfile.street_number}`}</p>
+                    <p>{`Stadt: ${userProfile.city}, PLZ: ${userProfile.postal_code}`}</p>
+                  </>
+                ) : (
+                  <Alert variant="warning" className="text-center">
+                    Es sind noch keine Benutzerdaten hinterlegt. Unter "Einstellungen" kannst du deine Daten bearbeiten.
+                  </Alert>
+                )}
+                
               </Card.Body>
             </Card>
           </Col>

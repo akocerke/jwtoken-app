@@ -53,7 +53,7 @@ const Settings = () => {
           <Col md={6}>
             <Card className="shadow-sm mt-4">
               <Card.Header className="bg-black text-white text-center">
-                Passwort ändern
+                Passwort ändern <i className="bi bi-gear-fill"></i>
               </Card.Header>
               <Card.Body className="bg-dark text-white">
                 <Form>
@@ -80,7 +80,7 @@ const Settings = () => {
                     onClick={handlePasswordChange}
                     className="mb-3 mt-3"
                   >
-                    Passwort ändern
+                    <i class="bi bi-arrow-repeat"></i> Passwort ändern 
                   </Button>
                 </Form>
               </Card.Body>
@@ -92,7 +92,7 @@ const Settings = () => {
           <Col md={6}>
             <Card className="shadow-sm mt-4">
               <Card.Header className="bg-black text-white text-center">
-                E-Mail-Adresse ändern
+                E-Mail-Adresse ändern <i className="bi bi-gear-fill"></i>
               </Card.Header>
               <Card.Body className="bg-dark text-white">
                 <Form>
@@ -119,7 +119,7 @@ const Settings = () => {
                     className="mb-3 mt-3"
                     onClick={handleEmailPreferencesChange}
                   >
-                    E-Mail-Adresse aktualisieren
+                    <i class="bi bi-arrow-repeat"></i> E-Mail-Adresse aktualisieren
                   </Button>
                 </Form>
               </Card.Body>
