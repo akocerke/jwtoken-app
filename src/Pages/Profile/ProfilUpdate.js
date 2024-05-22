@@ -33,10 +33,10 @@ const ProfileUpdateForm = () => {
             postalCode: data.postal_code || "",
           });
         } else {
-          throw new Error("Keine Daten erhalten. Hier kannst du deine Profildaten bearbeiten");
+          throw new Error("Hier kannst du deine Profildaten bearbeiten");
         }
       } catch (error) {
-        setErrorMessage("Fehler beim Laden der Profildaten: " + error.message);
+        setErrorMessage(error.message);
       }
     };
 
@@ -66,7 +66,10 @@ const ProfileUpdateForm = () => {
       setSuccessMessage("");
     }
   };
-  const handleBack = () => {
+  const handleBack1 = () => {
+    navigate("/dashboard");
+  };
+  const handleBack2 = () => {
     navigate("/settings");
   };
   return (
@@ -74,7 +77,7 @@ const ProfileUpdateForm = () => {
       <Container className="text-center">
         <h2 className="pb-4">Profil aktualisieren</h2>
         {successMessage && <Alert variant="success">{successMessage}</Alert>}
-        {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
+        {errorMessage && <Row className="justify-content-center"><Alert variant="warning" className="col-6">{errorMessage}</Alert></Row>}
       </Container>
       <Container className="mt-5 border border-warning p-5 rounded bg-gradient col-6">
         <Form onSubmit={handleSubmit}>
@@ -138,17 +141,22 @@ const ProfileUpdateForm = () => {
               placeholder="Postleitzahl"
             />
           </Form.Group>
-          <Row>
-            <Col xs={6} className="mt-4" >
-              <Button variant="primary" type="submit" className="float-start" >
-                Aktualisieren
+          <Row className="justify-content-between">
+            <Col xs={4} className="mt-4" >
+              <Button variant="success" type="submit" className="float-start" >
+              <i class="bi bi-arrow-repeat"></i> Aktualisieren
               </Button>
             </Col>
-            <Col xs={6} className="mt-4">
-              <Button variant="secondary" onClick={handleBack} className="float-end">
-                Zurück zu Einstellungen
+            <Col xs={4} className="mt-4">
+            <Button variant="info" onClick={handleBack1} className="float-center">
+            <i className="bi bi-speedometer2"></i> Dashboard
               </Button>
+              
             </Col>
+            <Col xs={4} className="mt-4">
+            <Button variant="info" onClick={handleBack2} className="float-end">
+              <i className="bi bi-gear-fill"></i> Einstellungen
+              </Button></Col>
           </Row>
         </Form>
       </Container>
