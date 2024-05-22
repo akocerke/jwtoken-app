@@ -4,8 +4,10 @@ import axios from "axios";
 const API_URL = "http://localhost:3030/jwtoken/auth";
 const API_URL_u = "http://localhost:3030/jwtoken/users";
 const API_URL_s = "http://localhost:3030/jwtoken/skills";
+
 // Login
 export const loginUser = async (email, password) => {
+ 
   try {
     const response = await axios.post(`${API_URL}/login`, {
       email: email, // Stellen Sie sicher, dass die Schlüssel den Anforderungen Ihrer API entsprechen

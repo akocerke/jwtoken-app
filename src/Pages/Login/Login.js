@@ -20,6 +20,7 @@ const Login = () => {
       setSuccessMessage("Login erfolgreich!");
       setError(null);
       navigate('/dashboard');
+      window.location.reload();
     } catch (error) {
       let errorMsg = "Anmeldefehler"; // Standardfehlermeldung
       if (error.response && error.response.data && error.response.data.message) {
