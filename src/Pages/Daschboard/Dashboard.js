@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, ProgressBar } from "react-bootstrap";
 import { getUserSkills, getAllSkills, getUserProfile } from "../../api/api";
 import Content from "../../Components/Content/Content";
+import ProfileShow from "../Profile/ProfileShow";
 
 const Dashboard = () => {
   const [userSkills, setUserSkills] = useState([]);
@@ -26,7 +27,7 @@ const Dashboard = () => {
           const allSkillsData = await getAllSkills();
           setAllSkills(allSkillsData);
         } else {
-          console.warn("Benutzerprofil nicht gefunden.");
+          console.warn("Keine Skills für Benuter vorhanden.");
         }
       } catch (error) {
         console.error("Fehler beim Abrufen der Daten:", error);
@@ -66,11 +67,15 @@ const Dashboard = () => {
   return (
     <Content>
       <Container>
-        <Row className="justify-content-center">
-          <Col md={6} className="bg-dark text-center mb-5">
-          <h2>{userName ? `Hallo ${userName}` : "Hallo"}</h2>
+        <p className="text-center">
+          {userName ? `Hallo ${userName} 😁` : "Hallo 😁"}
+        </p>
+        <Row className="justify-content-center border-0">
+          <Col m={8}>
+            <ProfileShow />
           </Col>
         </Row>
+
         <Row className="justify-content-center">
           <Col md={6}>
             <Card className="shadow-sm">
@@ -79,7 +84,7 @@ const Dashboard = () => {
               </Card.Header>
               <Card.Body className="bg-dark text-white">
                 {userSkills.length === 0 ? (
-                  <p>Keine Skills verfügbar</p>
+                  <p>Du hast noch keine Skills 😮</p>
                 ) : (
                   userSkills.map((userSkill, index) => (
                     <div key={index}>
