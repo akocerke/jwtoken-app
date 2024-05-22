@@ -1,31 +1,36 @@
 import React, { useState, useEffect } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  ProgressBar,
-} from "react-bootstrap";
-import { getUserSkills, getAllSkills } from "../../api/api";
+import { Container, Row, Col, Card, ProgressBar } from "react-bootstrap";
+import { getUserSkills, getAllSkills, getUserProfile } from "../../api/api";
 import Content from "../../Components/Content/Content";
 
 const Dashboard = () => {
   const [userSkills, setUserSkills] = useState([]);
   const [allSkills, setAllSkills] = useState([]);
+  const [userName, setUserName] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Benutzerfähigkeiten abrufen
-        const userSkillsData = await getUserSkills();
-        setUserSkills(userSkillsData);
+        // Benutzerprofil abrufen, um den Benutzernamen zu erhalten
+        const userToken = localStorage.getItem("token");
+        const userProfile = await getUserProfile(userToken);
+        if (userProfile) {
+          const { first_name, last_name } = userProfile;
+          const fullName = `${first_name} ${last_name}`;
+          setUserName(fullName);
+          console.log("Benutzername:", fullName);
 
-        // Alle Skills abrufen
-        const allSkillsData = await getAllSkills();
-        setAllSkills(allSkillsData);
+          const userSkillsData = await getUserSkills();
+          setUserSkills(userSkillsData);
+
+          const allSkillsData = await getAllSkills();
+          setAllSkills(allSkillsData);
+        } else {
+          console.warn("Benutzerprofil nicht gefunden.");
+        }
       } catch (error) {
         console.error("Fehler beim Abrufen der Daten:", error);
-        // Behandle den Fehler entsprechend
+        // Fehlerbehandlung hier hinzufügen
       }
     };
 
@@ -63,7 +68,7 @@ const Dashboard = () => {
       <Container>
         <Row className="justify-content-center">
           <Col md={6} className="bg-dark text-center mb-5">
-           hallo
+          <h2>{userName ? `Hallo ${userName}` : "Hallo"}</h2>
           </Col>
         </Row>
         <Row className="justify-content-center">
@@ -91,7 +96,9 @@ const Dashboard = () => {
                         )}
                       />
                       <div className="text-center mt-2">
-                        <p>verifiziert {getVerificationIcon(userSkill.verified)}</p>
+                        <p>
+                          verifiziert {getVerificationIcon(userSkill.verified)}
+                        </p>
                       </div>
                       <hr className="border"></hr>
                     </div>
