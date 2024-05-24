@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Image, Alert} from "react-bootstrap";
-import Content from "../../Components/Content/Content";
 import { getUserProfile, fetchUserProfile } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 
@@ -45,8 +44,7 @@ const ProfileShow = () => {
   }
 
   return (
-    <Content>
-      <Container>
+      <Container className="m-3">
         <Row className="justify-content-center">
           <Col md={6}>
             <Card>
@@ -75,7 +73,6 @@ const ProfileShow = () => {
           </Col>
         </Row>
       </Container>
-    </Content>
   );
 };
 

@@ -31,7 +31,6 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
           {isLoggedIn &&  <Nav.Link className="text-info" href="/dashboard"><i className="bi bi-speedometer2"></i> Dashboard</Nav.Link>}
-          {isLoggedIn && <Nav.Link className="text-info" href="/settings"><i className="bi bi-gear-fill"></i> Einstellungen</Nav.Link>}
           </Nav>
           <Nav className="ms-auto">
           {!isLoggedIn && <Nav.Link className="text-success" href="/login"><i className="bi bi-box-arrow-in-right"></i> Login</Nav.Link>}

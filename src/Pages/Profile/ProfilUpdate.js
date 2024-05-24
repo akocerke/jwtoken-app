@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Form, Button, Container, Alert, Row, Col } from "react-bootstrap";
-import Content from "../../Components/Content/Content";
 import { updateUserProfile, getUserProfile } from "../../api/api"; // Annahme: getUserProfile ist eine API-Funktion, die Benutzerdaten lädt
-import { useNavigate } from "react-router-dom";
+
 const ProfileUpdateForm = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -15,7 +14,6 @@ const ProfileUpdateForm = () => {
   });
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -66,20 +64,14 @@ const ProfileUpdateForm = () => {
       setSuccessMessage("");
     }
   };
-  const handleBack1 = () => {
-    navigate("/dashboard");
-  };
-  const handleBack2 = () => {
-    navigate("/settings");
-  };
+  
   return (
-    <Content>
+    <>
       <Container className="text-center">
-        <h2 className="pb-4">Profil aktualisieren</h2>
         {successMessage && <Alert variant="success">{successMessage}</Alert>}
         {errorMessage && <Row className="justify-content-center"><Alert variant="warning" className="col-6">{errorMessage}</Alert></Row>}
       </Container>
-      <Container className="mt-5 border border-warning p-5 rounded bg-gradient col-6">
+      <Container className="border border-warning p-5 rounded bg-gradient col-6 mt-3">
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3">
             <Form.Label>Vorname</Form.Label>
@@ -142,25 +134,16 @@ const ProfileUpdateForm = () => {
             />
           </Form.Group>
           <Row className="justify-content-between">
-            <Col xs={4} className="mt-4" >
+            <Col xs={5} className="mt-4" >
               <Button variant="success" type="submit" className="float-start" >
               <i class="bi bi-arrow-repeat"></i> Aktualisieren
               </Button>
             </Col>
-            <Col xs={4} className="mt-4">
-            <Button variant="info" onClick={handleBack1} className="float-center">
-            <i className="bi bi-speedometer2"></i> Dashboard
-              </Button>
-              
-            </Col>
-            <Col xs={4} className="mt-4">
-            <Button variant="info" onClick={handleBack2} className="float-end">
-              <i className="bi bi-gear-fill"></i> Einstellungen
-              </Button></Col>
+            
           </Row>
         </Form>
       </Container>
-    </Content>
+      </>
   );
 };
 

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Container, Row, Col, Image, Alert, Button } from "react-bootstrap";
+import { Row, Col, Image, Alert, Button } from "react-bootstrap";
 import Content from "../../Components/Content/Content";
 import { fetchUserProfile, updateUserProfileImage } from "../../api/api";
 
@@ -11,7 +10,6 @@ const ProfilemanageUpload = () => {
   const [error, setError] = useState("");
   const [isUploading, setIsUploading] = useState(false);
   const [successMessage, setSuccessMessage] = useState(""); // Zustand für Erfolgsmeldungen
-  const navigate = useNavigate();
   const getFullImagePath = (path) => {
     if (path.startsWith("http") || path.startsWith("https")) {
       return path; // Wenn der Pfad bereits eine vollständige URL ist
@@ -81,14 +79,11 @@ const ProfilemanageUpload = () => {
     }
   };
 
-  const handleBack = () => {
-    navigate("/settings"); // Führt die Navigation zur Profilseite durch
-  };
+
 
   return (
     <Content>
-      <Container fluid className="p-3">
-        <h2 className="text-center">Profilbild Verwalten</h2>
+      
         {error && <Alert variant="danger">{error}</Alert>}
         {successMessage && <Alert variant="success">{successMessage}</Alert>}
         <Row className="justify-content-center col-12">
@@ -131,13 +126,10 @@ const ProfilemanageUpload = () => {
                 </div>
               </div>
             )}
-            <Button className="btn btn-secondary mb-4" onClick={handleBack}>
-            Zurück zu Einstellungen
-          </Button>
+            
           </Col>
           
         </Row>
-      </Container>
     </Content>
   );
 };

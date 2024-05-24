@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, ProgressBar } from "react-bootstrap";
 import { getUserSkills, getAllSkills, getUserProfile } from "../../api/api";
-import Content from "../../Components/Content/Content";
-import ProfileShow from "../Profile/ProfileShow";
 
-const Dashboard = () => {
+
+const SkillsShow = () => {
   const [userSkills, setUserSkills] = useState([]);
   const [allSkills, setAllSkills] = useState([]);
   const [userName, setUserName] = useState("");
@@ -65,22 +64,15 @@ const Dashboard = () => {
   };
 
   return (
-    <Content>
-      <Container>
+      <Container className="mt-3">
         <p className="text-center">
-          {userName ? `Hallo ${userName} 😁` : "Hallo 😁"}
+          
         </p>
-        <Row className="justify-content-center border-0">
-          <Col m={8}>
-            <ProfileShow />
-          </Col>
-        </Row>
-
         <Row className="justify-content-center">
           <Col md={6}>
             <Card className="shadow-sm">
               <Card.Header className="bg-black text-white text-center">
-                Deine Skills
+              {userName ? `Skills von ${userName} 😁` : "😁"}
               </Card.Header>
               <Card.Body className="bg-dark text-white">
                 {userSkills.length === 0 ? (
@@ -114,8 +106,7 @@ const Dashboard = () => {
           </Col>
         </Row>
       </Container>
-    </Content>
   );
 };
 
-export default Dashboard;
+export default SkillsShow;

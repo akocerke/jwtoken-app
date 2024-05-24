@@ -1,6 +1,6 @@
 
 function Content({ children }) {
-  return <div className="container mt-5 p-4">{children}</div>;
+  return <div className="container overflow-hidden">{children}</div>;
 }
 
 
